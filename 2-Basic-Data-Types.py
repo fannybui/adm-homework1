@@ -124,7 +124,7 @@ def tuples():
 def main():
     while True:
         print("\n================================")
-        print("DATA TYPES")
+        print("BASIC DATA TYPES")
         print("================================")
         print("1. List Comprehensions")
         print("2. Find the Runner-Up Score!")
