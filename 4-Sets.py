@@ -22,20 +22,81 @@ def f_average():
 # EXERCISE 2 : No Idea!
 # ==================================================
 
+def no_idea():
+    n, m = map(int, input("Enter integers n and m separated by a space : ").split())
+    array = list(map(int, input("Enter the n numbers separated by a space that will allow you to grade your happiness : ").split()))
+    A = set(map(int, input("Enter the m numbers that you like : ").split()))
+    B = set(map(int, input("Enter the m numbers that you dislike : ").split()))
+
+    happiness = 0
+
+    for nb in array:
+        if nb in A:
+            happiness += 1
+        elif nb in B:
+            happiness -= 1
+
+    print(happiness)
 
 # ==================================================
-# EXERCISE 3 : 
+# EXERCISE 3 : Symmetric Difference
 # ==================================================
 
+def sym_diff():
+    m = int(input("Enter integer m : "))
+    list_m = set(map(int, input("Enter list of m integers : ").split()))
+    n = int(input("Enter integer n : "))
+    list_n = set(map(int, input("Enter list of n integers : ").split()))
+
+    result = set()
+
+    for number in list_m:
+        if number not in list_n:
+            result.add(number)
+            
+    for number in list_n:
+        if number not in list_m:
+            result.add(number)
+
+    result = sorted(result)
+
+    for number in result:
+        print(number)
+
 # ==================================================
-# EXERCISE 4 : 
+# EXERCISE 4 : Set .add()
 # ==================================================
 
+def country_stamps():
+    n = int(input("Enter the total number of stamps : "))
+    countries = set()
+    for i in range(n):
+        name = input("Enter the name of a country : ")
+        countries.add(name)
+    print(len(countries))
 
 # ==================================================
-# EXERCISE 5 : 
+# EXERCISE 5 : Set .discard(), .remove() & .pop()
 # ==================================================
 
+def commands():
+    n = int(input("Enter the integer n : "))
+    s = set(map(int, input("Enter the list of n integers between 0 and 9 : ").split()))
+    N = int(input("Enter the number of commands : "))
+
+    for i in range(N):
+        command = input("Enter the command followed by a number : ").split()
+
+        if command[0] == "pop":
+            s.pop()
+        elif command[0] == "remove":
+            value = int(command[1]) 
+            if value in s: 
+                s.remove(value)
+        elif command[0] == "discard":
+            s.discard(int(command[1]))
+
+    print(sum(s))
 
 # ==================================================
 # EXERCISE 6 : 
@@ -80,13 +141,13 @@ def f_average():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("SETS")
         print("================================")
         print("1. Introduction to Sets")
         print("2. No Idea!")
-        # print("3. ")
-        # print("4. ")
-        # print("5. ")
+        print("3. Symmetric Difference")
+        print("4. Set .add()")
+        print("5. Set .discard(), .remove() & .pop()")
         # print("6. ")
         # print("7. ")
         # print("8. ")
@@ -103,17 +164,17 @@ def main():
         if choice == "1":
             f_average()
 
-        # elif choice == "2":
-        #     runner_up()
+        elif choice == "2":
+            no_idea()
 
-        # elif choice == "3":
-        #     nested_lists()
+        elif choice == "3":
+            sym_diff()
 
-        # elif choice == "4":
-        #     percentage()
+        elif choice == "4":
+            country_stamps()
 
-        # elif choice == "5":
-        #     lists()
+        elif choice == "5":
+            commands()
 
         # elif choice == "6":
         #     tuples()
