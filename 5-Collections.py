@@ -1,11 +1,26 @@
 # ==================================================
-# EXERCISE 1 : 
+# EXERCISE 1 : collections.Counter()
 # ==================================================
+from collections import Counter
 
-def blabla():
+def shoe_counter():
+
+    X = int(input("Enter the total number of shoes : "))
+    shoe_sizes = Counter(map(int, input("Enter the list of all the shoe sizes : ").split()))
+    N = int(input("Enter the number of customers : "))
+
+    total = 0
+
+    for i in range(N):
+        size, price = map(int, input("Enter the shoe size and the price : ").split())
+        if shoe_sizes[size] > 0:
+            total += price
+            shoe_sizes[size] -= 1
+
+    print(total)
 
 # ==================================================
-# EXERCISE 2 : 
+# EXERCISE 2 : DefaultDict Tutorial
 # ==================================================
 
 
@@ -44,10 +59,10 @@ def blabla():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("COLLECTIONS")
         print("================================")
-        # print("1. ")
-        # print("2. ")
+        print("1. collections.Counter()")
+        print("2. DefaultDict Tutorial")
         # print("3. ")
         # print("4. ")
         # print("5. ")
@@ -60,7 +75,7 @@ def main():
         choice = input("Choose an exercise: ")
 
         if choice == "1":
-            # blabla()
+            shoe_counter()
 
         # elif choice == "2":
         #     runner_up()
