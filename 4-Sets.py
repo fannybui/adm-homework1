@@ -99,39 +99,137 @@ def commands():
     print(sum(s))
 
 # ==================================================
-# EXERCISE 6 : 
+# EXERCISE 6 : Set .union() Operation
 # ==================================================
 
-# ==================================================
-# EXERCISE 7 : 
-# ==================================================
+def union_op():
+    n = int(input("Enter an integer n : "))
+    english = set(map(int, input("Enter a list of n integers separated by a space : ").split()))
+    b = int(input("Enter an integer b : "))
+    french = set(map(int, input("Enter a list of b integers separated by a space : ").split()))
+
+    students = english.union(french)
+    print(len(students))
 
 # ==================================================
-# EXERCISE 8 : 
+# EXERCISE 7 : Set .intersection() Operation
 # ==================================================
 
+def intersection_op():
+    n = int(input("Enter an integer n : "))
+    english = set(map(int, input("Enter a list of n integers separated by a space : ").split()))
+    b = int(input("Enter an integer b : "))
+    french = set(map(int, input("Enter a list of b integers separated by a space : ").split()))
+
+    students = english.intersection(french)
+    print(len(students))
+
 # ==================================================
-# EXERCISE 9 : 
+# EXERCISE 8 : Set .difference() Operation
 # ==================================================
+
+def difference_op():
+    n = int(input("Enter an integer n : "))
+    english = set(map(int, input("Enter a list of n integers separated by a space : ").split()))
+    b = int(input("Enter an integer b : "))
+    french = set(map(int, input("Enter a list of b integers separated by a space : ").split()))
+
+    students = english.difference(french)
+    print(len(students))
+
+# ==================================================
+# EXERCISE 9 : Set .symmetric_difference() Operation
+# ==================================================
+
+def symmetric_difference_op():
+    n = int(input("Enter an integer n : "))
+    english = set(map(int, input("Enter a list of n integers separated by a space : ").split()))
+    b = int(input("Enter an integer b : "))
+    french = set(map(int, input("Enter a list of b integers separated by a space : ").split()))
+
+    students = english.symmetric_difference(french)
+    print(len(students))
 
 
 # ==================================================
-# EXERCISE 10 : 
+# EXERCISE 10 : Set Mutations
 # ==================================================
 
+def mut():
+    n = int(input("Enter the number n of elements in the set A : "))
+    A = set(map(int, input("Enter the n elements of the set A : ").split()))
+    N = int(input("Enter the number N of operations : "))
+
+    for i in range(N):
+        command = input("Enter the operation followed the length of the other set : ").split()
+        operation = command[0]
+
+        B = set(map(int, input("Enter the elements of the other set : ").split()))
+
+        if operation == "update":
+            A.update(B)
+
+        elif operation == "intersection_update":
+            A.intersection_update(B)
+
+        elif operation == "difference_update":
+            A.difference_update(B)
+
+        elif operation == "symmetric_difference_update":
+            A.symmetric_difference_update(B)
+
+    print(sum(A))
+
 # ==================================================
-# EXERCISE 11 : 
+# EXERCISE 11 : The Captain's Room
 # ==================================================
+
+def captain_room():
+    K = int(input("Enter integer K : "))
+    rooms = list(map(int, input("Enter room numbers : ").split()))
+    unique_rooms = set(rooms)
+    captain_room = (sum(unique_rooms) * K - sum(rooms)) // (K - 1)
+    print(captain_room)
+
+# ==================================================
+# EXERCISE 12 : Check Subset
+# ==================================================
+
+def check_subset():
+    T = int(input("Enter the number T of test cases : "))
+
+    for i in range(T):
+        n = int(input("Enter the number n of elements in set A : "))
+        A = set(map(int, input("Enter the n elements of set A : ").split()))
+        m = int(input("Enter the number m of elements in set B : "))
+        B = set(map(int, input("Enter the m elements of set B : ").split()))
+        result = True
+        for element in A: 
+            if element not in B: 
+                result = False 
+                break
+        print(result)
 
 
 # ==================================================
-# EXERCISE 12 : 
+# EXERCISE 13 : Check Strict Superset
 # ==================================================
 
-
-# ==================================================
-# EXERCISE 13 : 
-# ==================================================
+def strict_superset():
+    A = set(map(int, input("Enter the elements of set A : ").split()))
+    n = int(input("Enter the number n of other sets : "))
+    result = True
+    for i in range(n):
+        B = set(map(int, input("Enter the elements of the other set : ").split()))
+        for element in B:
+            if element not in A:
+                result = False
+                break
+        if len(A) <= len(B):
+            result = False
+        if result == False:
+            break
+    print(result)
 
 
 # ==================================================
@@ -148,14 +246,14 @@ def main():
         print("3. Symmetric Difference")
         print("4. Set .add()")
         print("5. Set .discard(), .remove() & .pop()")
-        # print("6. ")
-        # print("7. ")
-        # print("8. ")
-        # print("9. ")
-        # print("10. ")
-        # print("11. ")
-        # print("12. ")
-        # print("13. ")
+        print("6. Set .union() Operation")
+        print("7. Set .intersection() Operation")
+        print("8. Set .difference() Operation")
+        print("9. Set .symmetric_difference() Operation")
+        print("10. Set Mutations")
+        print("11. The Captain's Room")
+        print("12. Check Subset")
+        print("13. Check Strict Superset")
         print("0. Exit")
         print("================================")
 
@@ -176,29 +274,29 @@ def main():
         elif choice == "5":
             commands()
 
-        # elif choice == "6":
-        #     tuples()
+        elif choice == "6":
+            union_op()
 
-        # elif choice == "7":
-        #     tuples()
+        elif choice == "7":
+            intersection_op()
 
-        # elif choice == "8":
-        #     tuples()
+        elif choice == "8":
+            difference_op()
 
-        # elif choice == "9":
-        #     tuples()
+        elif choice == "9":
+            symmetric_difference_op()
 
-        # elif choice == "10":
-        #     tuples()
+        elif choice == "10":
+            mut()
 
-        # elif choice == "11":
-        #     tuples()
+        elif choice == "11":
+            captain_room()
 
-        # elif choice == "12":
-        #     tuples()
+        elif choice == "12":
+            check_subset()
 
-        # elif choice == "13":
-        #     tuples()
+        elif choice == "13":
+            strict_superset()
 
         elif choice == "0":
             print("Goodbye!")
