@@ -77,7 +77,7 @@ def f_count_substring():
     sub_string = input("Enter the substring :").strip()
     count = count_substring(string, sub_string)
     print(count)
-
+ 
 
 # ==================================================
 # EXERCISE 6 : String Validators
@@ -142,36 +142,152 @@ def f_wrap():
     print(result)
 
 # ==================================================
-# EXERCISE 9 : 
+# EXERCISE 9 : Designer Door Mat
+# ==================================================
+
+def door_mat():
+    N, M = map(int, input("Enter N and M separated by space : ").split())
+
+    for i in range(1, N, 2):
+        pattern = ".|." * i
+        print(pattern.center(M, "-"))
+
+    print("WELCOME".center(M, "-"))
+
+    for i in range(N - 2, 0, -2):
+        pattern = ".|." * i
+        print(pattern.center(M, "-"))
+
+# ==================================================
+# EXERCISE 10 : String Formatting
+# ==================================================
+
+def print_formatted(number):
+
+    width = len(bin(number)[2:])
+
+    for i in range(1, number + 1):
+        decimal = str(i)
+        octal = oct(i)[2:]
+        hexadecimal = hex(i)[2:].upper()
+        binary = bin(i)[2:]
+
+        print(decimal.rjust(width), 
+              octal.rjust(width), 
+              hexadecimal.rjust(width), 
+              binary.rjust(width))
+
+def f_print_formatted():
+    n = int(input("Enter an integer between 1 and 99 :"))
+    print_formatted(n)
+
+
+# ==================================================
+# EXERCISE 11 : Alphabet Rangoli
+# ==================================================
+
+def print_rangoli(size):
+    
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    width = 4 * size - 3
+    
+    L=[]
+    
+    for i in range(size):
+        right_part = alphabet[i:size]
+        left_part = alphabet[size - 1:i:-1]
+        letters = left_part + right_part
+        line = "-".join(letters)
+        line = line.center(width, "-")
+        L.append(line)
+
+    for i in range(size - 1, 0, -1):
+        print(L[i])
+    for line in L:
+        print(line)
+
+def f_print_rangoli():
+    n = int(input())
+    print_rangoli(n)
+
+# ==================================================
+# EXERCISE 12 : Capitalize!
 # ==================================================
 
 
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the solve function below.
+def solve(name):
+
+    L = name.split(" ")
+    capitalized_names = []
+
+    for word in L:
+        capitalized = word.capitalize()
+        capitalized_names.append(capitalized)
+
+    result = " ".join(capitalized_names)
+
+    return result
+
+def f_solve():
+    string = input("Enter a name :")
+    result = solve(string)
+    print(result)
+
 # ==================================================
-# EXERCISE 10 : 
+# EXERCISE 13 : The Minion Game
 # ==================================================
 
+def minion_game(string):
+    
+    kevin = 0
+    stuart = 0
+    vowels = "AEIOU"
+    length = len(string)
+
+    for i in range(length):
+        points = length - i
+        if string[i] in vowels:
+            kevin += points
+        else:
+            stuart += points
+
+    if kevin > stuart:
+        print("Kevin", kevin)
+    elif stuart > kevin:
+        print("Stuart", stuart)
+    else:
+        print("Draw")
+
+def f_minion_game():
+    s = input("Enter a string in capital :")
+    minion_game(s)
 
 # ==================================================
-# EXERCISE 11 : 
+# EXERCISE 14 : Merge the Tools!
 # ==================================================
 
+def merge_the_tools(string, k):
+    for i in range(0, len(string), k):
+        substring = string[i:i + k]
 
+        result = ""
 
-# ==================================================
-# EXERCISE 12 : 
-# ==================================================
+        for character in substring:
+            if character not in result:
+                result += character
 
+        print(result)
 
-# ==================================================
-# EXERCISE 13 : 
-# ==================================================
-
-
-
-# ==================================================
-# EXERCISE 14 : 
-# ==================================================
-
+def f_merge_the_tools():
+    string, k = input("Enter a string (of length n) : "), int(input("Enter a integer k (where  k is a factor of n)"))
+    merge_the_tools(string, k)
 
 # ==================================================
 # MAIN MENU
@@ -188,14 +304,14 @@ def main():
         print("4. Mutations")
         print("5. Find a string")
         print("6. String Validators")
-        print("7. Text Alignment")
+        # print("7. Text Alignment")
         print("8. Text Wrap")
-        # print("9. ")
-        # print("10. ")
-        # print("11. ")
-        # print("12. ")
-        # print("13. ")
-        # print("14. ")
+        print("9. Designer Door Mat")
+        print("10. String Formatting")
+        print("11. Alphabet Rangoli")
+        print("12. Capitalize!")
+        print("13. The Minion Game")
+        print("14. Merge the Tools!")
         print("0. Exit")
         print("================================")
 
@@ -225,23 +341,23 @@ def main():
         elif choice == "8":
             f_wrap()
 
-        # elif choice == "9":
-            # tuples()
+        elif choice == "9":
+            door_mat()
 
-        # elif choice == "10":
-            # tuples()
+        elif choice == "10":
+            f_print_formatted()
 
-        # elif choice == "11":
-            # tuples()
+        elif choice == "11":
+            f_print_rangoli()
 
-        # elif choice == "12":
-            # tuples()
+        elif choice == "12":
+            f_solve()
 
-        # elif choice == "13":
-            # tuples()
+        elif choice == "13":
+            f_minion_game()
 
-        # elif choice == "14":
-            # tuples()
+        elif choice == "14":
+            f_merge_the_tools()
 
         elif choice == "0":
             print("Goodbye!")
