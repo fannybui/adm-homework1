@@ -12,14 +12,9 @@ def blabla():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("EXCEPTIONS")
         print("================================")
         # print("1. ")
-        # print("2. ")
-        # print("3. ")
-        # print("4. ")
-        # print("5. ")
-        # print("6. ")
         print("0. Exit")
         print("================================")
 
@@ -27,21 +22,6 @@ def main():
 
         if choice == "1":
             # blabla()
-
-        # elif choice == "2":
-        #     runner_up()
-
-        # elif choice == "3":
-        #     nested_lists()
-
-        # elif choice == "4":
-        #     percentage()
-
-        # elif choice == "5":
-        #     lists()
-
-        # elif choice == "6":
-        #     tuples()
 
         elif choice == "0":
             print("Goodbye!")
