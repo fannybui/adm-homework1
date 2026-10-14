@@ -1,8 +1,25 @@
 # ==================================================
-# EXERCISE 1 : 
+# EXERCISE 1 : Calendar Module
 # ==================================================
 
-def blabla():
+def calendar_module():
+    import calendar
+
+    month, day, year = map(int, input("Enter the space separated month, day and year : ").split())
+    weekday = calendar.weekday(year, month, day)
+
+    days = ["MONDAY", "TUESDAY", "WEDNESDAY","THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+
+    print(days[weekday])
+
+
+# ==================================================
+# EXERCISE 2 : Time Delta
+# ==================================================
+
+def time_delta():
+    
+
 
 
 # ==================================================
@@ -12,36 +29,20 @@ def blabla():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("DATE AND TIME")
         print("================================")
-        # print("1. ")
-        # print("2. ")
-        # print("3. ")
-        # print("4. ")
-        # print("5. ")
-        # print("6. ")
+        print("1. Calendar Module")
+        print("2. Time Delta")
         print("0. Exit")
         print("================================")
 
         choice = input("Choose an exercise: ")
 
         if choice == "1":
-            # blabla()
+            calendar_module()
 
         # elif choice == "2":
         #     runner_up()
-
-        # elif choice == "3":
-        #     nested_lists()
-
-        # elif choice == "4":
-        #     percentage()
-
-        # elif choice == "5":
-        #     lists()
-
-        # elif choice == "6":
-        #     tuples()
 
         elif choice == "0":
             print("Goodbye!")
