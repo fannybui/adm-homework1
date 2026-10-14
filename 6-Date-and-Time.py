@@ -17,10 +17,28 @@ def calendar_module():
 # EXERCISE 2 : Time Delta
 # ==================================================
 
-def time_delta():
-    
+from datetime import datetime
 
+def time_delta(t1, t2):
+    format_date = "%a %d %b %Y %H:%M:%S %z"
 
+    date1 = datetime.strptime(t1, format_date)
+    date2 = datetime.strptime(t2, format_date)
+
+    delta = abs(int((date1 - date2).total_seconds()))
+
+    return str(delta)
+
+def f_time_delta():
+    t = int(input("Enter T the  number of testcases : "))
+
+    for t_itr in range(t):
+        t1 = input("Enter t1 in the format 'Day dd Mon yyyy hh:mm:ss +xxxx' : ")
+
+        t2 = input("Enter t2 in the format 'Day dd Mon yyyy hh:mm:ss +xxxx' : ")
+
+        delta = time_delta(t1, t2)
+        print(delta)
 
 # ==================================================
 # MAIN MENU
@@ -41,8 +59,8 @@ def main():
         if choice == "1":
             calendar_module()
 
-        # elif choice == "2":
-        #     runner_up()
+        elif choice == "2":
+            f_time_delta()
 
         elif choice == "0":
             print("Goodbye!")
