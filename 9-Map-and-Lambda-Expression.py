@@ -12,7 +12,7 @@ def blabla():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("MAP AND LAMBDA EXPRESSION")
         print("================================")
         # print("1. ")
         # print("2. ")
