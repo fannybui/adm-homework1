@@ -319,6 +319,49 @@ def credit_card():
 
 
 # ==================================================
+# EXERCISE 16 : Validating Postal Codes
+# ==================================================
+
+import re
+
+def postal_code(): 
+    regex_integer_in_range = r"^[1-9][0-9]{5}$"
+    regex_alternating_repetitive_digit_pair = r"(?=(\d)\d\1)"
+
+    P = input("Enter the postal code to be checked : ")
+
+    print (bool(re.match(regex_integer_in_range, P)) 
+    and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)
+
+# ==================================================
+# EXERCISE 17 : Matrix Script
+# ==================================================
+
+import math
+import os
+import random
+import re
+import sys
+
+def matrix_decoding():
+
+    first_multiple_input = input("Enter space-separated integers n and m : ").rstrip().split()
+    n = int(first_multiple_input[0])
+    m = int(first_multiple_input[1])
+
+    matrix = []
+
+    for _ in range(n):
+        matrix_item = input("Enter the line that contain row elements of the matrix script : ")
+        matrix.append(matrix_item)
+
+    decoded = ''.join(''.join(column) for column in zip(*matrix))
+
+    result = re.sub(r'(?<=\w)[^\w]+(?=\w)', ' ', decoded)
+
+    print(result)
+
+# ==================================================
 # MAIN MENU
 # ==================================================
 
@@ -342,6 +385,8 @@ def main():
         print("13. Detect HTML Tags, Attributes and Attribute Values")
         print("14. Validating UID")
         print("15. Validating Credit Card Numbers")
+        print("16. Validating Postal Codes")
+        print("17. Matrix Script")
         print("0. Exit")
         print("================================")
 
@@ -391,6 +436,12 @@ def main():
 
         elif choice == "15":
             credit_card()
+
+        elif choice == "16":
+            postal_code()
+
+        elif choice == "17":
+            matrix_decoding()
 
         elif choice == "0":
             print("Goodbye!")
