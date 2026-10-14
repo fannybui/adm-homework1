@@ -186,30 +186,136 @@ def HEX_colorcode():
 # EXERCISE 11 : HTML Parser - Part 1
 # ==================================================
 
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print("Start :", tag)
+        for attr, value in attrs:
+            print("->", attr, ">", value)
+
+    def handle_endtag(self, tag):
+        print("End   :", tag)
+
+    def handle_startendtag(self, tag, attrs):
+        print("Empty :", tag)
+        for attr, value in attrs:
+            print("->", attr, ">", value)
+
+
 def html_parser_1():
+    n = int(input("Enter the number of HTML code lines : "))
+    html = ""
 
+    for _ in range(n):
+        html += input("Enter the HTML code : ") + "\n"
 
-
-# ==================================================
-# EXERCISE 12 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 13 : 
-# ==================================================
-
-
+    parser = MyHTMLParser()
+    parser.feed(html)
 
 # ==================================================
-# EXERCISE 14 : 
+# EXERCISE 12 : HTML Parser - Part 2
+# ==================================================
+
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_comment(self, data):
+        if '\n' in data:
+            print(">>> Multi-line Comment")
+        else:
+            print(">>> Single-line Comment")
+        print(data)
+
+    def handle_data(self, data):
+        if data != '\n':
+            print(">>> Data")
+            print(data)
+
+def html_parser_2():
+    html = ""
+    N = int(input("Enter the number of HTML code lines : ")) 
+    for i in range(N):
+        html += input("Enter the HTML code : ").rstrip()
+        html += '\n'
+        
+    parser = MyHTMLParser()
+    parser.feed(html)
+    parser.close()
+
+# ==================================================
+# EXERCISE 13 : Detect HTML Tags, Attributes and Attribute Values
+# ==================================================
+
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print(tag)
+        for attr, value in attrs:
+            print("->", attr, ">", value)
+
+    def handle_startendtag(self, tag, attrs):
+        print(tag)
+        for attr, value in attrs:
+            print("->", attr, ">", value)
+
+def html_parser_3():
+    html = ""
+    N = int(input("Enter the number of HTML code lines : "))
+    for _ in range(N):
+        html += input("Enter the HTML code : ") + "\n"
+
+    parser = MyHTMLParser()
+    parser.feed(html)
+    parser.close()
+
+# ==================================================
+# EXERCISE 14 : Validating UID
+# ==================================================
+
+import re
+
+def UID():
+    T = int(input("Enter the number of UID to be checked : "))
+
+    for _ in range(T):
+        uid = input("Enter the UID to be checked : ")
+
+        if (len(uid) == 10
+            and uid.isalnum()
+            and len(set(uid)) == 10
+            and len(re.findall(r'[A-Z]', uid)) >= 2
+            and len(re.findall(r'[0-9]', uid)) >= 3):
+            print("Valid")
+        else:
+            print("Invalid")
+
+# ==================================================
+# EXERCISE 15 : Validating Credit Card Numbers
 # ==================================================
 
 
-# ==================================================
-# EXERCISE 15 : 
-# ==================================================
+import re
 
+def credit_card(): 
+    N = int(input("Enter the number of elements to be checked : "))
+
+    for _ in range(N):
+        card = input("Enter the credit card number : ")
+
+        pattern = r'^[456]\d{15}$|^[456]\d{3}(-\d{4}){3}$'
+        # ^[456]\d{15}$ : 16 chiffres sans tirets
+        # ^[456]\d{3}(-\d{4}){3}$ : 16 chiffres séparés par des tirets en groupes de 4
+
+        if re.match(pattern, card):
+            digits = card.replace('-', '')
+            if not re.search(r'(\d)\1{3}', digits):
+                print("Valid")
+            else:
+                print("Invalid")
+        else:
+            print("Invalid")
 
 
 # ==================================================
@@ -232,10 +338,10 @@ def main():
         print("9. Validating and Parsing Email Addresses")
         print("10. Hex Color Code")
         print("11. HTML Parser - Part 1")
-        # print("12. ")
-        # print("13. ")
-        # print("14. ")
-        # print("15. ")
+        print("12. HTML Parser - Part 2")
+        print("13. Detect HTML Tags, Attributes and Attribute Values")
+        print("14. Validating UID")
+        print("15. Validating Credit Card Numbers")
         print("0. Exit")
         print("================================")
 
@@ -274,17 +380,17 @@ def main():
         elif choice == "11":
             html_parser_1()
 
-        # elif choice == "12":
-        #     tuples()
+        elif choice == "12":
+            html_parser_2()
 
-        # elif choice == "13":
-        #     tuples()
+        elif choice == "13":
+            html_parser_3()
 
-        # elif choice == "14":
-        #     tuples()
+        elif choice == "14":
+            UID()
 
-        # elif choice == "15":
-        #     tuples()
+        elif choice == "15":
+            credit_card()
 
         elif choice == "0":
             print("Goodbye!")
