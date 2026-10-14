@@ -135,26 +135,64 @@ def valid_phone_number():
         else:
             print("NO")
 
-
 # ==================================================
-# EXERCISE 9 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 10 : 
+# EXERCISE 9 : Validating and Parsing Email Addresses
 # ==================================================
 
+import re
+from email.utils import parseaddr, formataddr
+
+def valid_email():
+
+    n = int(input("Enter n the number of email addresses : "))
+
+    pattern = r'^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z]+\.[a-zA-Z]{1,3}$'
+
+    for _ in range(n):
+        line = input("Enter the following format => name <user@email.com> :")
+        name, email = parseaddr(line)
+
+        if re.match(pattern, email):
+            print(formataddr((name, email)))
 
 # ==================================================
-# EXERCISE 11 : 
+# EXERCISE 10 : Hex Color Code
 # ==================================================
+
+import re
+
+def HEX_colorcode(): 
+
+    n = int(input("Enter the number of code lines : "))
+    inside = False
+
+    for _ in range(n):
+        line = input("Enter the CSS code: ")
+
+        if '{' in line:
+            inside = True
+            continue
+
+        if '}' in line:
+            inside = False
+            continue
+
+        if inside:
+            colors = re.findall(r'#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?\b', line)
+            for color in colors:
+                print(color)
+
+# ==================================================
+# EXERCISE 11 : HTML Parser - Part 1
+# ==================================================
+
+def html_parser_1():
 
 
 
 # ==================================================
 # EXERCISE 12 : 
 # ==================================================
-
 
 
 # ==================================================
@@ -191,9 +229,9 @@ def main():
         print("6. Regex Substitution")
         print("7. Validating Roman Numerals")
         print("8. Validating phone numbers")
-        # print("9. ")
-        # print("10. ")
-        # print("11. ")
+        print("9. Validating and Parsing Email Addresses")
+        print("10. Hex Color Code")
+        print("11. HTML Parser - Part 1")
         # print("12. ")
         # print("13. ")
         # print("14. ")
@@ -227,14 +265,14 @@ def main():
         elif choice == "8":
             valid_phone_number()
 
-        # elif choice == "9":
-        #     tuples()
+        elif choice == "9":
+            valid_email()
 
-        # elif choice == "10":
-        #     tuples()
+        elif choice == "10":
+            HEX_colorcode()
 
-        # elif choice == "11":
-        #     tuples()
+        elif choice == "11":
+            html_parser_1()
 
         # elif choice == "12":
         #     tuples()
