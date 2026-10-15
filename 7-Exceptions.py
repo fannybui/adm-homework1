@@ -1,9 +1,17 @@
 # ==================================================
-# EXERCISE 1 : 
+# EXERCISE 1 : Exceptions
 # ==================================================
 
-def blabla():
+def exceptions():
 
+    T = int(input("Enter integer T : "))
+
+    for _ in range(T):
+        a, b = input("Enter the space separated values a and b over T lines : ").split()
+        try:
+            print(int(a) // int(b))
+        except Exception as e:
+            print("Error Code:", e)
 
 # ==================================================
 # MAIN MENU
@@ -21,7 +29,7 @@ def main():
         choice = input("Choose an exercise: ")
 
         if choice == "1":
-            # blabla()
+            exceptions()
 
         elif choice == "0":
             print("Goodbye!")
