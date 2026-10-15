@@ -65,7 +65,7 @@ def sorting():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("BUILT-INS")
         print("================================")
         print("1. Zipped!")
         print("2. Athlete Sort")
