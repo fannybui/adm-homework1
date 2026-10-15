@@ -1,9 +1,21 @@
 # ==================================================
-# EXERCISE 1 : 
+# EXERCISE 1 : Map and Lambda Function
 # ==================================================
 
-def blabla():
+def fibonacci(n):
+    fib = []
+    a, b = 0, 1
 
+    for _ in range(n):
+        fib.append(a)
+        a, b = b, a + b
+
+    return fib
+
+def fibo():
+    cube = lambda x: x**3
+    n = int(input("Enter an integer N : "))
+    print(list(map(cube, fibonacci(n))))
 
 # ==================================================
 # MAIN MENU
@@ -14,34 +26,14 @@ def main():
         print("\n================================")
         print("MAP AND LAMBDA EXPRESSION")
         print("================================")
-        # print("1. ")
-        # print("2. ")
-        # print("3. ")
-        # print("4. ")
-        # print("5. ")
-        # print("6. ")
+        print("1. Map and Lambda Function")
         print("0. Exit")
         print("================================")
 
         choice = input("Choose an exercise: ")
 
         if choice == "1":
-            # blabla()
-
-        # elif choice == "2":
-        #     runner_up()
-
-        # elif choice == "3":
-        #     nested_lists()
-
-        # elif choice == "4":
-        #     percentage()
-
-        # elif choice == "5":
-        #     lists()
-
-        # elif choice == "6":
-        #     tuples()
+            fibo()
 
         elif choice == "0":
             print("Goodbye!")
