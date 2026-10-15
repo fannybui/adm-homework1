@@ -1,83 +1,42 @@
 # ==================================================
-# EXERCISE 1 : 
+# EXERCISE 1 : Standardize Mobile Number Using Decorators
 # ==================================================
 
-def blabla():
+def wrapper(f):
+    def fun(l):
+        l = ['+91 ' + number[-10:-5] + ' ' + number[-5:] for number in l]
+        f(l)
+    return fun
+
+@wrapper
+def sort_phone(l):
+    print(*sorted(l), sep='\n')
+
+def mobile_phone():
+    n = int(input("Enter n the number of phone numbers: "))
+    l = [input("Enter a phone number : ") for _ in range(n)]
+    sort_phone(l) 
 
 # ==================================================
-# EXERCISE 2 : 
+# EXERCISE 2 : Decorators 2 - Name Directory
 # ==================================================
 
-# ==================================================
-# EXERCISE 3 : 
-# ==================================================
+import operator
 
-# ==================================================
-# EXERCISE 4 : 
-# ==================================================
+def person_lister(f):
+    def inner(people):
+        people.sort(key=lambda person: int(person[2]))
+        return map(f, people)
+    return inner
+    
+@person_lister
+def name_format(person):
+    return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
 
-# ==================================================
-# EXERCISE 5 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 6 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 7 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 8 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 9 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 10 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 11 : 
-# ==================================================
-
-
-
-# ==================================================
-# EXERCISE 12 : 
-# ==================================================
-
-
-
-# ==================================================
-# EXERCISE 13 : 
-# ==================================================
-
-
-
-# ==================================================
-# EXERCISE 14 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 15 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 16 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 17 : 
-# ==================================================
-
+def age_ordering():
+    n = int(input("Enter n the number of people : "))
+    people = [input("Enter the first name, last name, age and sex (separated by space) for each person : ").split() for i in range(n)]
+    print(*name_format(people), sep='\n')
 
 # ==================================================
 # MAIN MENU
@@ -86,80 +45,20 @@ def blabla():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("CLOSURES AND DECORATORS")
         print("================================")
-        # print("1. ")
-        # print("2. ")
-        # print("3. ")
-        # print("4. ")
-        # print("5. ")
-        # print("6. ")
-        # print("7. ")
-        # print("8. ")
-        # print("9. ")
-        # print("10. ")
-        # print("11. ")
-        # print("12. ")
-        # print("13. ")
-        # print("14. ")
-        # print("15. ")
-        # print("16. ")
-        # print("17. ")
+        print("1. Standardize Mobile Number Using Decorators")
+        print("2. Decorators 2 - Name Directory")
         print("0. Exit")
         print("================================")
 
         choice = input("Choose an exercise: ")
 
         if choice == "1":
-            # blabla()
+            mobile_phone()
 
-        # elif choice == "2":
-        #     runner_up()
-
-        # elif choice == "3":
-        #     nested_lists()
-
-        # elif choice == "4":
-        #     percentage()
-
-        # elif choice == "5":
-        #     lists()
-
-        # elif choice == "6":
-        #     tuples()
-
-        # elif choice == "7":
-        #     tuples()
-
-        # elif choice == "8":
-        #     tuples()
-
-        # elif choice == "9":
-        #     tuples()
-
-        # elif choice == "10":
-        #     tuples()
-
-        # elif choice == "11":
-        #     tuples()
-
-        # elif choice == "12":
-        #     tuples()
-
-        # elif choice == "13":
-        #     tuples()
-
-        # elif choice == "14":
-        #     tuples()
-
-        # elif choice == "15":
-        #     tuples()
-
-        # elif choice == "16":
-        #     tuples()
-
-        # elif choice == "17":
-        #     tuples()
+        elif choice == "2":
+            age_ordering()
 
         elif choice == "0":
             print("Goodbye!")
