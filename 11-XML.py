@@ -1,83 +1,50 @@
 # ==================================================
-# EXERCISE 1 : 
+# EXERCISE 1 : XML 1 - Find the Score
 # ==================================================
 
-def blabla():
+import sys
+import xml.etree.ElementTree as etree
+
+def get_attr_number(node):
+    score = len(node.attrib)
+
+    for child in node:
+        score += get_attr_number(child)
+
+    return score
+
+def f_get_attr_number():
+    n = int(input("Enter N the number of XML code lines : "))
+    lines = []
+    for _ in range(n):
+        lines.append(input("Enter the N lines of your XML document : "))
+    xml = '\n'.join(lines)
+    root = etree.fromstring(xml)
+    print(get_attr_number(root))
 
 # ==================================================
-# EXERCISE 2 : 
+# EXERCISE 2 : XML2 - Find the Maximum Depth
 # ==================================================
 
-# ==================================================
-# EXERCISE 3 : 
-# ==================================================
+import xml.etree.ElementTree as etree
 
-# ==================================================
-# EXERCISE 4 : 
-# ==================================================
+maxdepth = 0
+def depth(elem, level):
+    global maxdepth
+    level += 1
+    if level > maxdepth:
+        maxdepth = level
+    for child in elem:
+        depth(child, level)
 
-# ==================================================
-# EXERCISE 5 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 6 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 7 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 8 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 9 : 
-# ==================================================
-
-# ==================================================
-# EXERCISE 10 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 11 : 
-# ==================================================
-
-
-
-# ==================================================
-# EXERCISE 12 : 
-# ==================================================
-
-
-
-# ==================================================
-# EXERCISE 13 : 
-# ==================================================
-
-
-
-# ==================================================
-# EXERCISE 14 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 15 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 16 : 
-# ==================================================
-
-
-# ==================================================
-# EXERCISE 17 : 
-# ==================================================
-
+def max_depth():
+    n = int(input("Enter N the number of XML code lines : "))
+    xml = ""
+    for i in range(n):
+        xml =  xml + input("Enter the N lines of your XML document : ") + "\n"
+    tree = etree.ElementTree(etree.fromstring(xml))
+    depth(tree.getroot(), -1)
+    print(maxdepth)
 
 # ==================================================
 # MAIN MENU
@@ -86,80 +53,20 @@ def blabla():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("XML")
         print("================================")
-        # print("1. ")
-        # print("2. ")
-        # print("3. ")
-        # print("4. ")
-        # print("5. ")
-        # print("6. ")
-        # print("7. ")
-        # print("8. ")
-        # print("9. ")
-        # print("10. ")
-        # print("11. ")
-        # print("12. ")
-        # print("13. ")
-        # print("14. ")
-        # print("15. ")
-        # print("16. ")
-        # print("17. ")
+        print("1. XML 1 - Find the Score")
+        print("2. XML2 - Find the Maximum Depth")
         print("0. Exit")
         print("================================")
 
         choice = input("Choose an exercise: ")
 
         if choice == "1":
-            # blabla()
+            f_get_attr_number()
 
-        # elif choice == "2":
-        #     runner_up()
-
-        # elif choice == "3":
-        #     nested_lists()
-
-        # elif choice == "4":
-        #     percentage()
-
-        # elif choice == "5":
-        #     lists()
-
-        # elif choice == "6":
-        #     tuples()
-
-        # elif choice == "7":
-        #     tuples()
-
-        # elif choice == "8":
-        #     tuples()
-
-        # elif choice == "9":
-        #     tuples()
-
-        # elif choice == "10":
-        #     tuples()
-
-        # elif choice == "11":
-        #     tuples()
-
-        # elif choice == "12":
-        #     tuples()
-
-        # elif choice == "13":
-        #     tuples()
-
-        # elif choice == "14":
-        #     tuples()
-
-        # elif choice == "15":
-        #     tuples()
-
-        # elif choice == "16":
-        #     tuples()
-
-        # elif choice == "17":
-        #     tuples()
+        elif choice == "2":
+            max_depth()
 
         elif choice == "0":
             print("Goodbye!")
