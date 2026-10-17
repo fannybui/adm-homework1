@@ -19,6 +19,8 @@ def f_birthdayCakeCandles():
 
     result = birthdayCakeCandles(candles)
 
+    print (result)
+
 # ==================================================
 # MAIN MENU
 # ==================================================
