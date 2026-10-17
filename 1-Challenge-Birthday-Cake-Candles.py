@@ -1,8 +1,23 @@
 # ==================================================
-# EXERCISE 1 : 
+# EXERCISE 1 : Birthday Cake Candles
 # ==================================================
 
-def blabla():
+import math
+import os
+import random
+import re
+import sys
+
+def birthdayCakeCandles(candles):
+    tallest = max(candles)
+    return candles.count(tallest)
+
+if f_birthdayCakeCandles():
+    candles_count = int(input("Enter the integer N : ").strip())
+
+    candles = list(map(int, input("Enter the N elements space-separated : ").rstrip().split()))
+
+    result = birthdayCakeCandles(candles)
 
 # ==================================================
 # MAIN MENU
@@ -11,16 +26,16 @@ def blabla():
 def main():
     while True:
         print("\n================================")
-        print("STRINGS")
+        print("Birthday Cake Candles")
         print("================================")
-        # print("1. ")
+        print("1. Birthday Cake Candles")
         print("0. Exit")
         print("================================")
 
         choice = input("Choose an exercise: ")
 
         if choice == "1":
-            # blabla()
+            f_birthdayCakeCandles()
 
         elif choice == "0":
             print("Goodbye!")
