@@ -12,7 +12,7 @@ def birthdayCakeCandles(candles):
     tallest = max(candles)
     return candles.count(tallest)
 
-if f_birthdayCakeCandles():
+def f_birthdayCakeCandles():
     candles_count = int(input("Enter the integer N : ").strip())
 
     candles = list(map(int, input("Enter the N elements space-separated : ").rstrip().split()))
